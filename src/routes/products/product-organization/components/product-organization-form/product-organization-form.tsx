@@ -245,7 +245,6 @@ export const ProductOrganizationForm = ({
               name="secondary_category_ids"
               render={({ field }) => {
                 // Filter out primary category from secondary categories options
-                const primaryCategoryId = form.watch("primary_category_id")
                 const filteredOptions = categories.options.filter(
                   (option) => option.value !== primaryCategoryId
                 )

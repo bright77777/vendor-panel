@@ -21,7 +21,8 @@ export const ProductOrganizationSection = ({
   // Fetch ALL categories and then filter to show only secondary ones
   const { product_categories: allCategories } = useProductCategories()
   
-  const primaryCategoryId = product.categories?.[0]?.id
+  const primaryCategory = product.categories?.[0]
+  const primaryCategoryId = primaryCategory?.id
   const secondaryCategoryIds = product.secondary_categories
     ?.map((sc) => sc.category_id)
     .filter((id) => id !== primaryCategoryId) || []
@@ -91,10 +92,10 @@ export const ProductOrganizationSection = ({
       <SectionRow
         title={t("products.fields.primaryCategory.label")}
         value={
-          product.categories?.[0] ? (
+          primaryCategory ? (
             <OrganizationTag
-              label={product.categories[0].name}
-              to={`/categories/${product.categories[0].id}`}
+              label={primaryCategory.name}
+              to={`/categories/${primaryCategory.id}`}
             />
           ) : undefined
         }
